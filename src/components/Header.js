@@ -20,7 +20,7 @@ const Header = () => {
             className="w-16 h-16 ml-2 mr-4"
             style={{ animation: 'fadeIn 2s ease-in-out' }}
           />
-          <div className='ml-2 md:ml-[400px]'>
+          <div className='ml-2 md:w-full w-32 md:ml-[400px]'>
             <SearchBar />
           </div>
         </div>

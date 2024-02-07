@@ -1,3 +1,4 @@
+// SearchBar.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,8 +8,9 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-   
-    navigate(`/players/${encodeURIComponent(query)}`);
+    if (query.trim() !== '') {
+      navigate(`/search/${encodeURIComponent(query)}`);
+    }
   };
 
   return (
@@ -19,9 +21,9 @@ const SearchBar = () => {
           placeholder="Search players..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="p-2 border border-gray-300 rounded w-full"
+          className="p-2 border mr-0 text-black border-gray-300 rounded w-full"
         />
-        <button type="submit" className="ml-2 px-4 py-2 hover:text-gray-800 bg-blue-500 text-white rounded">
+        <button type="submit" className="ml-2 md:mr-0 mr-10 md:w-32 w-20 px-4 py-2 hover:text-gray-800 bg-blue-500 text-white rounded">
           Search
         </button>
       </form>

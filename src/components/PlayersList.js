@@ -16,7 +16,7 @@ const PlayersList = ({ players }) => {
   );
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 ml-5 md:ml-12 mt-6 p-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 ml-1 md:ml-12 mt-6 p-4">
       {Array.isArray(players) ? (
         players.map((player) => renderPlayer(player))
       ) : (

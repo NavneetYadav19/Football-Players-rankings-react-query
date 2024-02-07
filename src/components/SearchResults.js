@@ -1,10 +1,15 @@
-import React from 'react';
+// SearchResults.js
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import usePlayers from '../hooks/usePlayers';
 
 const SearchResults = () => {
   const { query } = useParams();
-  const { data: players, isError } = usePlayers();
+  const { data: players, isError, isLoading, refetch } = usePlayers(query);
+
+  useEffect(() => {
+    refetch();
+  }, [query, refetch]);
 
   const filteredPlayers = players
     ? players.filter((player) =>
@@ -15,8 +20,9 @@ const SearchResults = () => {
   return (
     <div>
       <h2>Search Results:</h2>
+      {isLoading && <div>Loading...</div>}
       {isError && <div>Error loading players data</div>}
-      {filteredPlayers.length > 0 ? (
+      {filteredPlayers && filteredPlayers.length > 0 ? (
         filteredPlayers.map((player) => (
           <div key={player.id}>
             <h3>{player.name}</h3>
